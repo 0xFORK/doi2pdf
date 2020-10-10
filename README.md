@@ -1,5 +1,8 @@
-# SciDownl
+# Disclaimer
+I am not responsible for the illegitimate use of this tool. 
+For example, the download of non-open-access papers or even those if this method is not allowed by the editors.
 
+## Download
 Download pdfs from Scihub via DOI.
 - Easy to use.
 - Easy to deal with captcha.
@@ -69,7 +72,7 @@ $ sudo scidownl -u
 
 If you have a list of DOIs, using `scidownl` in your python scripts for downloading all of the papers is recommended.
 
-Download single paper via DOI.
+**Download single paper via DOI.**
 ```python
 from scidownl.scihub import *
 
@@ -78,17 +81,35 @@ out = 'paper'
 sci = SciHub(DOI, out).download(choose_scihub_url_index=3)
 ```
 
-Dowloading a list of DOIS by simply using a for loop.
+**Dowloading a list of DOIS by simply using a for loop.**
 ```python
 from scidownl.scihub import *
 
-DOIs = [...]
+DOIs = ['doi1','doi2','doi3','doi4','doi5']
 out = 'paper'
 for doi in DOIs:
   SciHub(doi, out).download(choose_scihub_url_index=3)
 ```
 
-Update available Scihub links.
+or 
+
+```python
+from scidownl.scihub import *
+
+a_file = open("doilist.txt", "r")
+
+DOIs = []
+for line in a_file:
+  DOIs.append(line)
+a_file.close()
+
+out = 'paper'
+for doi in DOIs:
+  print(doi)
+  SciHub(doi, out).download(choose_scihub_url_index=1)
+```
+
+**Update available Scihub links.**
 ```python
 from scidownl.update_link import *
 
